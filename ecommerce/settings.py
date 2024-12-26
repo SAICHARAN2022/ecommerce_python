@@ -139,7 +139,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
 
 
 
@@ -160,7 +159,11 @@ ALLOWED_HOSTS = ['ecommerce.onrender.com']
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Correct path
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR , 'staticfiles')
+]
 
 # MEDIA_URL = '/media/'
 
