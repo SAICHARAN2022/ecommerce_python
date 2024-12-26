@@ -131,6 +131,9 @@ class OrdersList(APIView):
         serializers = OrderDetailSerializer(orders_list,many=True)
         return Response(serializers.data,status=status.HTTP_200_OK)
 
+class Test(APIView):
+    def get(self):
+        return Response({"msg":"sucess"},status=status.HTTP_200_OK)
 
 
             
