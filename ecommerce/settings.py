@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +27,7 @@ SECRET_KEY = 'erqmakdkcq#lqmt!x510)880vrl-npu4ccxl)&ne6^h+8_@&86'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "saicharan2001.pythonanywhere.com"]
 
 
 # Application definition
@@ -84,18 +86,22 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ecommerce_backend',  # Replace with your database name
+#         'USER': 'postgres',      # Replace with your PostgreSQL username
+#         'PASSWORD': 'pgadmin',  # Replace with your PostgreSQL password
+#         'HOST': 'localhost',   # Use the host where PostgreSQL is running
+#         'PORT': '5432',        # Default PostgreSQL port
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_backend',  # Replace with your database name
-        'USER': 'postgres',      # Replace with your PostgreSQL username
-        'PASSWORD': 'pgadmin',  # Replace with your PostgreSQL password
-        'HOST': 'localhost',   # Use the host where PostgreSQL is running
-        'PORT': '5432',        # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(
+        default="sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
+    )
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
